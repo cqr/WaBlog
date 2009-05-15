@@ -1,17 +1,19 @@
-require 'rubygems'
-require 'test/unit'
 require 'main'
+require 'bacon'
 require 'sinatra/test'
 
 set :environment, :test
 
-class WaBlogTest < Test::Unit::TestCase
+class Bacon::Context
   include Sinatra::Test
+end
+
+describe "Our Walking Blog" do
   
-  def test_displays_welcome_page
+  it 'gives our default page' do
     get '/'
-    assert ok?
-    assert_equal("<h1>A walking blog</h1>", body)
+    response.should.be.ok
+    body.should.equal "<h1>A walking blog</h1>"
   end
-  
+
 end
