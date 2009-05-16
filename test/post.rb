@@ -21,4 +21,18 @@ describe Post do
     @post.save
     Post.get(@post.id).should.equal @post
   end
+  
+  it "handles sluggifys on setting slug" do
+    @post.slug = 'My Little Sample Slug + All  that J4zz'
+    @post.slug.should.equal 'my_little_sample_slug_all_that_j4zz'
+  end
+  
+  it "automatically creates a slug from title" do
+    @post = Post.new
+    @post.title = 'A Test Post'
+    @post.save
+    @post.slug.should.equal 'a_test_post'
+    Post.get(@post.id).slug.should.equal 'a_test_post'
+  end
+  
 end
