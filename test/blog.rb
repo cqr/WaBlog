@@ -1,16 +1,12 @@
-require 'main'
-require 'bacon'
-require 'sinatra/test'
-
-set :environment, :test
+require 'test/base'
 
 class Bacon::Context
   include Sinatra::Test
 end
 
-describe "Our Walking Blog" do
+describe "Blog" do
   
-  it 'gives our default page' do
+  it 'provides a default page' do
     get '/'
     response.should.be.ok
     body.should.equal "<h1>A walking blog</h1>"

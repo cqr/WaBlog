@@ -1,0 +1,6 @@
+require 'rubygems'
+require 'datamapper'
+require 'main'
+require 'bacon'
+require 'sinatra/test'
+require 'lib/db'
