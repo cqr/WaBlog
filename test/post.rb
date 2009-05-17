@@ -10,7 +10,7 @@ describe Post do
     p.footprints.should.equal []
   end
 
-  it "can have it's attributes updated and read" do
+  it "can have its attributes updated and read" do
     p = Post.new
     p.title = 'a testing post'
     p.slug = 'test'
@@ -48,4 +48,33 @@ describe Post do
     p.tags.should.equal []
   end
   
+  it "allows adding footprints" do
+    p = Post.new(:title => 'a')
+    p.body = "some text"
+    p.body.should.equal "some text"
+  end
+  
+  it "overwrites footprints which are less than 5 minutes old" do
+    p = Post.new(:title => 'a')
+    p.body = "a"
+    p.revisions.should.equal 1
+    p.body = "b"
+    p.revisions.should.equal 1
+    p.body.should.equal "b"
+  end
+  
+  it "does not overwrite locked footprints, even < 5 mintues old" do
+    p = Post.new(:title => 'a')
+    p.body = "a", :permanent
+    p.body = "b"
+    p.revisions.should.equal 2
+  end
+  
+  it "does not overwrite footprints > 5 minutes old" do
+    p = Post.new(:title => 'a')
+    p.body = 'a'
+    p.revision.created_at = DateTime.civil
+    p.body = 'b'
+    p.revisions.should.equal 2
+  end
 end
