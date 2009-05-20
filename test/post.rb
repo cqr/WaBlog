@@ -1,7 +1,8 @@
 require 'test/base'
+puts $config[:database]
 describe Post do
   
-
+  Post.all.each {|p| p.destroy }
   it "can be created as an empty Post Object" do
     p = Post.new
     p.title.should.be.nil
@@ -21,7 +22,7 @@ describe Post do
   it "can be saved and read from the database" do
     p = Post.new
     p.save.should.equal false
-    p.title = 'a'
+    p.title = 'test read write'
     p.save
     Post.get(p.id).should.equal p
   end
@@ -41,21 +42,25 @@ describe Post do
   end
   
   it "allows adding and removing tags" do
-    p = Post.new(:title => 'a')
+    p = Post.new(:title => 'arghragh')
     p.add_tag('ducky')
     p.tags.first.name.should.equal 'ducky'
     p.remove_tag('ducky')
     p.tags.should.equal []
+    p.add_tag('a')
+    p.tags = 'r b c d'
+    p.tags.size.should.equal 4
+    p.tags.should.not.include 'a'
   end
   
   it "allows adding footprints" do
-    p = Post.new(:title => 'a')
+    p = Post.new(:title => 'test footprints')
     p.body = "some text"
     p.body.should.equal "some text"
   end
   
   it "overwrites footprints which are less than 5 minutes old" do
-    p = Post.new(:title => 'a')
+    p = Post.new(:title => 'test overwrite')
     p.body = "a"
     p.revisions.should.equal 1
     p.body = "b"
@@ -64,17 +69,21 @@ describe Post do
   end
   
   it "does not overwrite locked footprints, even < 5 mintues old" do
-    p = Post.new(:title => 'a')
+    p = Post.new(:title => 'test dont lock')
     p.body = "a", :permanent
     p.body = "b"
     p.revisions.should.equal 2
+    p.body.should.equal "b"
+    p.body(-1).should.equal "a"
   end
   
   it "does not overwrite footprints > 5 minutes old" do
-    p = Post.new(:title => 'a')
+    p = Post.new(:title => 'test do lock')
     p.body = 'a'
     p.revision.created_at = DateTime.civil
     p.body = 'b'
     p.revisions.should.equal 2
+    p.body.should.equal 'b'
+    p.body(1).should.equal 'a'
   end
 end

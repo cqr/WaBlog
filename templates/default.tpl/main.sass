@@ -1,0 +1,323 @@
+body
+  :margin 0px
+  :padding 20px
+  :margin-left 50px
+  :background #FFF
+  :background-image url('/gourd.gif')
+  :text-align justify
+  :font 14px "Trebuchet MS", Arial, Helvetica, sans-serif
+  :color #000
+
+
+
+h1, h2, h3
+  :font 1.82em
+  :font-weight normal
+  :font-family Arial, Helvetica, sans-serif
+  :color #000
+  :text-align left
+
+
+p, ol
+  :line-height 1.67em
+
+
+ul
+  :line-height 1.67em
+  :padding-left 1.2em
+
+
+a
+  :color #828170
+
+  &:hover
+    :text-decoration none
+
+
+hr
+  :display none
+
+
+#logo
+  h1
+    :margin 0
+    :height letter-spacing: -2px
+    :font-size 4em
+    :font-weight normal
+    :color #FFFFFF
+
+    a
+      :display block
+      :text-decoration none
+      :color #FFFFFF
+
+      img
+        :border none
+
+  p
+    :margin -45px 0 0 303px
+    :text-transform uppercase
+    :font-family Tahoma, Arial, Helvetica, sans-serif
+    :font-weight bold
+
+  a
+    :display block
+    :text-decoration none
+    :color #FFFFFF
+
+
+#logo2
+  h1
+    :margin 0
+    :height 130px
+    :padding 40px 0 0 0px
+    :text-transform lowercase
+    :letter-spacing -2px
+    :font-size 2em
+    :font-weight normal
+    :color #000000
+
+    a
+      :display block
+      :text-decoration none
+      :color #000
+
+      img
+        :height 100px
+        :border none
+        :margin -60px 0 0 0
+
+  p
+    :margin -103px 0 0 2px
+    :text-transform uppercase
+    :font-family Tahoma, Arial, Helvetica, sans-serif
+    :font-weight bold
+
+  a
+    :display block
+    :text-decoration none
+    :color #000
+
+
+#content
+  :margin 0px auto
+  :padding 20px 0 0 0
+  :float left
+  :width 50em
+  :margin-bottom 10px
+
+
+.post
+  :margin-top 20px
+
+  .date
+    :float left
+    :width 29px
+    :height 32px
+    :margin 0
+    :margin-top 3px
+    :margin-right 20px
+    :padding-top 2px
+    :text-transform uppercase
+    :text-align center
+    :font-size 10px
+    :font-weight bold
+    :color #999999
+
+    b
+      :margin 0
+      :padding 0
+      :display block
+      :margin-top -5px
+      :font-size 14px
+      :color #5C5C5C
+
+  .title
+    :margin 0
+    :padding 0px 0 0 0
+    :margin-left 10px
+    :padding-left 10px
+    :font-size 1.4em
+
+    a
+      :color #000
+      :text-decoration none
+
+  .meta
+    :margin 0 0 10px 20px
+    :padding 0
+    :line-height normal
+    :text-transform uppercase
+    :color #979680
+
+    a
+      :color #828170
+
+  .entry
+    :margin 0
+    :padding 0 0 20px 50px
+
+
+#older_posts
+  :font-size 120%
+
+
+#new_post
+  :position absolute
+  :top 1em
+  :right 1em
+
+
+.postzoom
+  :margin-top 20px
+  :position relative
+
+  .title
+    :margin 0
+    :padding 0px 0 0 0
+    :font-size 3em
+
+  .meta
+    :margin 0
+    :padding 0
+    :line-height normal
+    :text-transform uppercase
+    :color #979680
+
+  .entry
+    :margin 0
+    :padding 0
+    :padding-top 10px
+    :padding-bottom 20px
+
+  .edit
+    :text-align right
+    :position absolute
+    :top 0
+    :right 0
+
+
+#footer
+  :margin 0 auto
+  :padding-top 20px
+  :padding-bottom 20px
+  :font-family Tahoma, Arial, Helvetica, sans-serif
+  :color #FFFFFF
+
+
+#legal
+  :clear both
+  :margin 0
+  :padding 10px 0
+  :font-size 10px
+  :color #525252
+
+
+.archive
+  .date
+    :font-size 85%
+    :color #828170
+
+  .title a
+    :font-size 120%
+    :text-decoration none
+    :color #000034
+
+
+pre
+  :font-family Monaco, monospace
+  :color #ccc
+  :background #000
+  :border-left 6px solid #222
+  :padding 0.4em
+  :padding-left 0.8em
+
+  span
+    &.attribute
+      :color #009900
+
+    &.char
+      :color #F00
+
+    &.class
+      :color #A020F0
+      :font-weight bold
+
+    &.comment
+      :color #0000FF
+
+    &.constant
+      :color #008B8B
+
+    &.escape
+      :color #6A5ACD
+
+    &.expr
+      :color #2222CC
+
+    &.global
+      :color #11AA44
+
+    &.ident
+      :color #CCCCCC
+
+    &.keyword
+      :color #A52A2A
+      :font-weight bold
+
+    &.method
+      :color #008B8B
+
+    &.module
+      :color #A020F0
+      :font-weight bold
+
+    &.number
+      :color #DD00DD
+
+    &.punct
+      :color #6A5ACD
+
+    &.regex, &.string
+      :color #DD00DD
+
+    &.symbol
+      :color #008B8B
+
+
+form[name=edit]
+  input
+    &[name=title], &[name=tags], &[name=slug]
+      :font-size 100%
+      :width 300pt
+      
+    &.default
+      :color #ddd
+ 
+  textarea
+    :font-size 100%
+    :width 50em
+    :height 25em
+  
+  button
+    :width 290px
+    :height 110px
+    :font-size 2em
+#loading
+  :position absolute
+  :top 0px
+  :right 0px
+  :display none
+
+#navigation
+  :position absolute
+  :top 0px
+  :left 600px
+  
+  a
+    :padding 10px 10px 0px 10px
+    :background-color #f59
+    :color #fff
+    :font-size 2.5em
+    :font-weight 800
+    :text-decoration none

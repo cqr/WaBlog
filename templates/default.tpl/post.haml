@@ -1,0 +1,16 @@
+.postzoom
+  %h2.title= @post.title
+  %p.meta
+    %small
+      tags:
+      -@post.tags.each do |tag|
+        %a{:href=>'/tags/'+tag.name}= tag.name
+  %p.meta= 'last updated ' + @post.updated_at
+  %p.meta
+    = "#{@post.revisions} revisions -"
+    %a{:href=>"/posts/#{@post.slug}/history"} view history
+  .entry
+    =@post.revision.to_html
+    -if is_logged_in?
+      .edit
+        %a{:href=> @post.slug+'/edit'} edit

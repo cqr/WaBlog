@@ -1,0 +1,14 @@
+-unless @post.errors.empty?
+  %ul#errors
+    -@post.errors.each do |e|
+      %li.error= e
+%form#newpost{:action=>'/posts',:method=>'post',:name=>'edit'}
+  .postzoom
+    %h2.title
+      %input#title{:type=>"text",:name=>"title",:value=> @post.title }/
+    %p.meta
+      %input#slug{:type=>"text",:name=>"slug",:value=>@post.slug }/
+    %p.meta
+      %input#tags{:type=>"text",:name=>"tags",:value=>@post.read_tags }/
+    .edit
+      %button{:type=>"submit",:value=>"Create"}Create

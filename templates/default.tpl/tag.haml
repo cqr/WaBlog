@@ -1,0 +1,10 @@
+%h1= "Posts tagged #{@tag}"
+-@posts.each do |post|
+  .post
+    %p.date= post.revision.updated_at.strftime("%b")+ '<b>' + post.revision.updated_at.strftime("%d") + '</b>'
+    %h2.title
+      %a{:href=> '/posts/' + post.slug}= post.title
+    %p.meta
+      %small= post.read_tags
+    .entry
+      = post.revision.to_html

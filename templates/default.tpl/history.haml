@@ -1,0 +1,13 @@
+.postzoom
+  %h2.title= @post.title + " - history"
+  %p.meta
+    %small
+      -@post.tags.each do |tag|
+        %a{:href=>'/tag/'+tag.name}= tag.name
+  -@post.revisions.downto 2 do |i|
+    %p.meta= @post.revision(i).updated_at
+    .entry
+      =@post.diff_html(i-1, i)
+  %p.meta= @post.revision(1).updated_at
+  .entry
+    =@post.revision(1)

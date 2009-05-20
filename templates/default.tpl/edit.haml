@@ -1,0 +1,19 @@
+-unless @post.errors.empty?
+  %ul#errors
+    -@post.errors.each do |e|
+      %li.error= e
+%form{:action=>"/posts/#{@post.id}",:method=>'post',:name=>'edit'}
+  .postzoom
+    %h2.title
+      %input#title{:type=>"text",:name=>"title",:value=> @post.title || 'title' }/
+    %p.meta
+      %input#slug{:type=>"text",:name=>"slug",:value=>@post.slug || 'slug' }/
+    %p.meta
+      %input#tags{:type=>"text",:name=>"tags",:value=>@post.read_tags || 'tags(space-separated)' }/
+    %p.meta#updated= 'last updated ' + @post.updated_at
+    .entry
+      %textarea#body_field{:name=>"body"}= @post.body
+    .edit
+      %button{:type=>"submit",:value=>"Save"} done (for now)
+    %input{:type=>'hidden', :name =>'id', :id=>'id', :value=>@post.id}
+    %input{:type=>'hidden', :name=>'_method', :value=>'put'}/
